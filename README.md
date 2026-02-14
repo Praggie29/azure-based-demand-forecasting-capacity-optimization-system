@@ -21,15 +21,9 @@ The dataset includes historical Azure usage data with the following dimensions:
 ### Milestone 1: Data Collection & Preparation (Completed)
 * **Data Cleaning:** Handled missing values in `usage_units` using median imputation.
 * **Validation:** Removed duplicate records and verified data types.
-* **Formatting:** Converted `timestamp` to datetime objects and sorted records chronologically.
-
-### Milestone 2: Feature Engineering & Data Wrangling (In Progress)
-* **Time-Based Features:** Extracted Year, Month, Day, and Weekday from timestamps.
-* **Holiday Indicators:** Added features to account for seasonal demand shifts.
-* **Next Steps:** Implementing rolling averages, lag features, and utilization ratios.
+* **Formatting:** Converted `timestamp` to datetime objects and sorted records chronologically
 
 ## Tech Stack
 * **Language:** Python
 * **Libraries:** Pandas, NumPy
-* **Platform:** Azure-based tools for data science
-*
+
