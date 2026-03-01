@@ -37,6 +37,14 @@ print(df.columns) #check all columns including new features
 #Feature Engineering and Data Wrangling
 
 df = df.set_index('timestamp')
+# Seasonality Flags
+df['day_of_week'] = df.index.dayofweek
+df['is_weekend'] = (df['day_of_week'] >= 5).astype(int)
+df['month'] = df.index.month
+df['quarter'] = df.index.quarter
+df['is_month_start'] = df.index.is_month_start.astype(int)
+df['is_month_end'] = df.index.is_month_end.astype(int)
+
 df['usage_lag_1'] = df['usage_units'].shift(1)
 df['usage_lag_7'] = df['usage_units'].shift(7)
 df['usage_lag_30'] = df['usage_units'].shift(30)
