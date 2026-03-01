@@ -1,3 +1,6 @@
+# MILESTONE 1
+#Data Collection and preparation
+
 import pandas as pd
 import numpy as np
 
@@ -29,3 +32,29 @@ holiday_months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] # Assuming holidays can
 df['is_holiday_month'] = df['month'].apply(lambda x: 1 if x in holiday_months else 0)
 print(df.head()) #check new features
 print(df.columns) #check all columns including new features
+
+#MILESTONE 2
+#Feature Engineering and Data Wrangling
+
+df = df.set_index('timestamp')
+df['usage_lag_1'] = df['usage_units'].shift(1)
+df['usage_lag_7'] = df['usage_units'].shift(7)
+df['usage_lag_30'] = df['usage_units'].shift(30)
+df['rolling_mean_7'] = df['usage_units'].rolling(window=7).mean()
+df['rolling_std_7'] = df['usage_units'].rolling(window=7).std()
+df['rolling_mean_30'] = df['usage_units'].rolling(window=30).mean()
+df['rolling_std_30'] = df['usage_units'].rolling(window=30).std()
+df['usage_growth_rate'] = df['usage_units'].pct_change()
+df['usage_spike'] = ( #spike detection
+    df['usage_units'] > 
+    (df['rolling_mean_7'] + 2 * df['rolling_std_7'])
+).astype(int)
+df['cumulative_mean_usage'] = df['usage_units'].expanding().mean()
+df = df.dropna()
+df = df.reset_index()
+print("Final Shape:", df.shape)
+print(df.head())
+df.to_csv("azure_cloud_usage_ml_dataset.csv", index=False)
+print(df.shape)
+print(df.isnull().sum())
+print(df.columns)
