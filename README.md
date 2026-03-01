@@ -23,6 +23,11 @@ The dataset includes historical Azure usage data with the following dimensions:
 * **Validation:** Removed duplicate records and verified data types.
 * **Formatting:** Converted `timestamp` to datetime objects and sorted records chronologically
 
+### Milestone 2: Feature Engineering & Data Wrangling (Completed)
+* **Seasonality Flags:** Created weekday/weekend and holiday markers.
+* **Usage Spikes:** Detected and encoded demand spike indicators.
+* **Wrangling:** Reshaped datasets into model-ready form.
+
 ## Tech Stack
 * **Language:** Python
 * **Libraries:** Pandas, NumPy
