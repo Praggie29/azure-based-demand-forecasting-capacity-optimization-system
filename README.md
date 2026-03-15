@@ -28,7 +28,20 @@ The dataset includes historical Azure usage data with the following dimensions:
 * **Usage Spikes:** Detected and encoded demand spike indicators.
 * **Wrangling:** Reshaped datasets into model-ready form.
 
+### Milestone 3: Machine Learning Model Development (Completed)
+* **Data Preparation:** Loaded the processed dataset from previous milestones and Generated lag features and rolling averages to capture historical demand patterns.
+* **Train-Test Split:** Data was splitted into training and testing datasets.
+* **Model Training:** Multiple machine learning models were trained to evaluate forecasting performance:
+     ARIMA (AutoRegressive Integrated Moving Average)
+     Random Forest Regressor
+     XGBoost Regressor
+* **Model Evaluation:** Models were evaluated using standard forecasting metrics:
+     MAE (Mean Absolute Error): Measures average prediction error.
+     RMSE (Root Mean Squared Error): Penalizes larger prediction errors.
+     Forecast Bias: Indicates systematic overestimation or underestimation.
+* **Backtesting:** TimeSeriesSplit validation was used to test model robustness across different time windows.
+
 ## Tech Stack
 * **Language:** Python
-* **Libraries:** Pandas, NumPy
+* **Libraries:** Pandas, NumPy, Matplotlib, Scikit-learn, XGBoost, Statsmodels
 
